@@ -1,0 +1,5 @@
+<div *ngIf="recipe">
+  <h2>{{ recipe.name }}</h2>
+  <p>Ingredients: {{ recipe.ingredients.join(', ') }}</p>
+  <p>Instructions: {{ recipe.instructions }}</p>
+</div>

@@ -1,0 +1,11 @@
+<div>
+  <h2>Recipe List</h2>
+
+  <ul>
+    <li *ngFor="let recipe of recipeLists">
+      <h3>{{ recipe.name }}</h3>
+      <p>Ingredients: {{ recipe.ingredients.join(', ') }}</p>
+      <p>Instructions: {{ recipe.instructions }}</p>
+    </li>
+  </ul>
+</div>

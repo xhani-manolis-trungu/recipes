@@ -1,0 +1,14 @@
+<div>
+  <h2>Recipe Management</h2>
+
+  <!-- Recipe Form Component for adding new recipes -->
+  <app-recipe-form (recipeAdded)="onRecipeAdded($event)"></app-recipe-form>
+
+  <!-- List of Recipes -->
+  <ul>
+    <li *ngFor="let recipe of recipes">
+      {{ recipe.name }}
+      <button (click)="onDeleteRecipe(recipe.id)">Delete</button>
+    </li>
+  </ul>
+</div>

@@ -1,0 +1,14 @@
+<form #recipeForm="ngForm" (ngSubmit)="onSubmit()">
+  <label for="name">Recipe Name:</label>
+  <input type="text" id="name" name="name" ngModel required>
+
+  <label for="ingredients">Ingredients (comma-separated):</label>
+  <input type="text" id="ingredients" name="ingredients" ngModel required>
+
+  <label for="instructions">Instructions:</label>
+  <textarea id="instructions" name="instructions" ngModel required></textarea>
+
+  <button type="submit">Save Recipe</button>
+</form>
+
+

@@ -1,0 +1,11 @@
+<div>
+  <h3>Shared Component</h3>
+  <button (click)="addNotification('New Notification')">Add Notification</button>
+  <button (click)="clearNotifications()">Clear Notifications</button>
+
+  <ul>
+    <li *ngFor="let notification of notifications">{{ notification }}</li>
+  </ul>
+
+  <p>Current Date and Time: {{ getCurrentDateTime() }}</p>
+</div>
