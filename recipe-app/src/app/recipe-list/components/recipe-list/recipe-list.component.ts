@@ -4,6 +4,7 @@ import { Observable, Subject, distinctUntilChanged, finalize, map, merge, mergeA
 import { RecipeList } from '../../models/recipe-list.model';
 import { RecipeListService } from '../../services/recipe-list.service';
 import { RecipeStateService } from '../../../shared/services/recipe-state.service';
+import { ToggleServiceService } from '../../../shared/services/toggle-service.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -11,6 +12,7 @@ import { RecipeStateService } from '../../../shared/services/recipe-state.servic
   styleUrl: './recipe-list.component.css'
 })
 export class RecipeListComponent {
+  toggleServiceKey: string | undefined;
   recipeList: Observable<RecipeList[] >| undefined;
 
   private destroy$ = new Subject<void>();
@@ -19,7 +21,8 @@ export class RecipeListComponent {
     private recipeListService: RecipeListService,
     private recipeStateService: RecipeStateService,
     private router: Router,
-    private route: ActivatedRoute) {}
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.getAllRecipeLists();
