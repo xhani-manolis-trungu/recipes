@@ -1,51 +1,49 @@
 import { Injectable } from '@angular/core';
 import { Recipe } from '../models/recipe.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable, filter, map } from 'rxjs';
+import { RecipeStateService } from '../../shared/services/recipe-state.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeService {
-  private recipes: Recipe[] = [
-    {
-      id: 1,
-      name: 'Spaghetti Bolognese',
-      ingredients: ['Spaghetti', 'Ground Beef', 'Tomato Sauce', 'Onion', 'Garlic', 'Olive Oil', 'Herbs'],
-      instructions: 'Cook spaghetti, brown beef, sauté onion and garlic, add tomato sauce, mix with spaghetti, and garnish with herbs.',
-    },
-    {
-      id: 2,
-      name: 'Chicken Caesar Salad',
-      ingredients: ['Chicken Breast', 'Romaine Lettuce', 'Croutons', 'Parmesan Cheese', 'Caesar Dressing'],
-      instructions: 'Grill chicken, chop lettuce, mix with croutons, Parmesan cheese, and Caesar dressing.',
-    },
-    {
-      id: 3,
-      name: 'Vegetarian Stir-Fry',
-      ingredients: ['Tofu', 'Broccoli', 'Bell Peppers', 'Carrots', 'Soy Sauce', 'Ginger', 'Garlic'],
-      instructions: 'Stir-fry tofu and vegetables with soy sauce, ginger, and garlic until cooked.',
-    },
-  ];
+  private apiUrl = 'http://localhost:3000/recipes';
 
-  getAllRecipes(): Recipe[] {
-    return this.recipes;
+  constructor(private http: HttpClient, private recipeStateService: RecipeStateService) {}
+
+  getAllRecipes(): Observable<Recipe[]> {
+    return this.http.get<Recipe[]>(this.apiUrl);
   }
 
-  getRecipeById(id: number): Recipe | undefined {
-    return this.recipes.find(recipe => recipe.id === id);
+  getRecipeById(id: string): Observable<Recipe> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<Recipe>(url);
+  }
+  addRecipe(recipe: Recipe): Observable<Recipe> {
+    return this.http.post<Recipe>(this.apiUrl, recipe);
   }
 
-  addRecipe(recipe: Recipe): void {
-    this.recipes.push(recipe);
+  updateRecipe(updatedRecipe: Recipe): Observable<Recipe> {
+    const url = `${this.apiUrl}/${updatedRecipe.id}`;
+    return this.http.put<Recipe>(url, updatedRecipe);
   }
 
-  updateRecipe(updatedRecipe: Recipe): void {
-    const index = this.recipes.findIndex(recipe => recipe.id === updatedRecipe.id);
-    if (index !== -1) {
-      this.recipes[index] = updatedRecipe;
-    }
+  deleteRecipe(id: string): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 
-  deleteRecipe(id: number): void {
-    this.recipes = this.recipes.filter(recipe => recipe.id !== id);
+  // Update this method to use RecipeStateService
+  deleteRecipeAndUpdateState(id: string): Observable<void> {
+    // Notify subscribers about the deleted recipe
+    this.recipeStateService.deleteRecipe(id);
+    return this.deleteRecipe(id);
+  }
+
+  addRecipeAndUpdateState(recipe: Recipe): Observable<Recipe> {
+    // Notify subscribers about the deleted recipe
+    this.recipeStateService.addRecipe(recipe);
+    return this.addRecipe(recipe);
   }
 }

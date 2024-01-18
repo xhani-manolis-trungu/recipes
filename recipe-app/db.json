@@ -1,0 +1,52 @@
+{
+  "recipes": [
+    {
+      "id": "3f",
+      "name": "Spaghetti Bolognese",
+      "ingredients": [
+        "Spaghetti",
+        "Ground Beef",
+        "Tomato Sauce",
+        "Onion",
+        "Garlic",
+        "Olive Oil",
+        "Herbs"
+      ],
+      "instructions": "Cook spaghetti, brown beef, sauté onion and garlic, add tomato sauce, mix with spaghetti, and garnish with herbs."
+    },
+    {
+      "id": "gr3g",
+      "name": "Chicken Caesar Salad",
+      "ingredients": [
+        "Chicken Breast",
+        "Romaine Lettuce",
+        "Croutons",
+        "Parmesan Cheese",
+        "Caesar Dressing"
+      ],
+      "instructions": "Grill chicken, chop lettuce, mix with croutons, Parmesan cheese, and Caesar dressing."
+    },
+    {
+      "id": "ar3h",
+      "name": "Vegetarian Stir-Fry",
+      "ingredients": [
+        "Tofu",
+        "Broccoli",
+        "Bell Peppers",
+        "Carrots",
+        "Soy Sauce",
+        "Ginger",
+        "Garlic"
+      ],
+      "instructions": "Stir-fry tofu and vegetables with soy sauce, ginger, and garlic until cooked."
+    },
+    {
+      "id": "c84",
+      "name": "sffad",
+      "ingredients": [
+        "fsdafda"
+      ],
+      "instructions": "fdsaf"
+    }
+  ]
+}

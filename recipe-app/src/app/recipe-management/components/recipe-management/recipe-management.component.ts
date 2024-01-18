@@ -1,3 +1,4 @@
+import { Observable, finalize } from 'rxjs';
 import { Component } from '@angular/core';
 import { Recipe } from '../../../recipe/models/recipe.model';
 import { RecipeManagementService } from '../../services/recipe-management.service';
@@ -8,7 +9,7 @@ import { RecipeManagementService } from '../../services/recipe-management.servic
   styleUrl: './recipe-management.component.css'
 })
 export class RecipeManagementComponent {
-  recipes: Recipe[] = [];
+  recipes: Observable<Recipe[]> | undefined;
 
   constructor(private recipeManagementService: RecipeManagementService) {
     // Fetch initial list of recipes
@@ -21,14 +22,12 @@ export class RecipeManagementComponent {
   }
 
   // Function to handle adding a new recipe
-  onRecipeAdded($e: Recipe): void {
-    this.recipeManagementService.addRecipe($e);
-    this.fetchRecipes(); // Refresh the list after adding a new recipe
+  onRecipeAdded(recipe: Recipe): void {
+    this.recipeManagementService.addRecipe(recipe).subscribe(() => this.fetchRecipes());
   }
 
   // Function to handle deleting a recipe
-  onDeleteRecipe(recipeId: number): void {
-    this.recipeManagementService.deleteRecipe(recipeId);
-    this.fetchRecipes(); // Refresh the list after deleting a recipe
+  onDeleteRecipe(recipeId: string): void {
+    this.recipeManagementService.deleteRecipe(recipeId).subscribe(() => this.fetchRecipes());
   }
 }

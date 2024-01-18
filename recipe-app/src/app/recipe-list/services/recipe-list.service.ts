@@ -1,51 +1,37 @@
+// src/app/recipe-list/services/recipe-list.service.ts
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 import { RecipeList } from '../models/recipe-list.model';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class RecipeListService {
-  private recipeLists: RecipeList[] = [
-    {
-      id: 1,
-      name: 'Spaghetti Bolognese',
-      ingredients: ['Spaghetti', 'Ground Beef', 'Tomato Sauce', 'Onion', 'Garlic', 'Olive Oil', 'Herbs'],
-      instructions: 'Cook spaghetti, brown beef, sauté onion and garlic, add tomato sauce, mix with spaghetti, and garnish with herbs.',
-    },
-    {
-      id: 2,
-      name: 'Chicken Caesar Salad',
-      ingredients: ['Chicken Breast', 'Romaine Lettuce', 'Croutons', 'Parmesan Cheese', 'Caesar Dressing'],
-      instructions: 'Grill chicken, chop lettuce, mix with croutons, Parmesan cheese, and Caesar dressing.',
-    },
-    {
-      id: 3,
-      name: 'Vegetarian Stir-Fry',
-      ingredients: ['Tofu', 'Broccoli', 'Bell Peppers', 'Carrots', 'Soy Sauce', 'Ginger', 'Garlic'],
-      instructions: 'Stir-fry tofu and vegetables with soy sauce, ginger, and garlic until cooked.',
-    },
-  ];
+  private apiUrl = 'http://localhost:3000/recipes';
 
-  getAllRecipeLists(): RecipeList[] {
-    return this.recipeLists;
+  constructor(private http: HttpClient) {}
+
+  getAllRecipeLists(): Observable<RecipeList[]> {
+    return this.http.get<RecipeList[]>(this.apiUrl);
   }
 
-  getRecipeListById(id: number): RecipeList | undefined {
-    return this.recipeLists.find(recipeList => recipeList.id === id);
+  getRecipeListById(id: number): Observable<RecipeList | undefined> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.get<RecipeList | undefined>(url);
   }
 
-  addRecipeList(recipeList: RecipeList): void {
-    this.recipeLists.push(recipeList);
+  addRecipeList(recipeList: RecipeList): Observable<RecipeList> {
+    return this.http.post<RecipeList>(this.apiUrl, recipeList);
   }
 
-  updateRecipeList(updatedRecipeList: RecipeList): void {
-    const index = this.recipeLists.findIndex(recipeList => recipeList.id === updatedRecipeList.id);
-    if (index !== -1) {
-      this.recipeLists[index] = updatedRecipeList;
-    }
+  updateRecipeList(updatedRecipeList: RecipeList): Observable<RecipeList> {
+    const url = `${this.apiUrl}/${updatedRecipeList.id}`;
+    return this.http.put<RecipeList>(url, updatedRecipeList);
   }
 
-  deleteRecipeList(id: number): void {
-    this.recipeLists = this.recipeLists.filter(recipeList => recipeList.id !== id);
+  deleteRecipeList(id: number): Observable<void> {
+    const url = `${this.apiUrl}/${id}`;
+    return this.http.delete<void>(url);
   }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Recipe } from '../../models/recipe.model';
 import { ActivatedRoute } from '@angular/router';
 import { RecipeService } from '../../services/recipe.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-recipe-detail',
@@ -9,12 +10,13 @@ import { RecipeService } from '../../services/recipe.service';
   styleUrl: './recipe-detail.component.css'
 })
 export class RecipeDetailComponent {
-  recipe: Recipe | undefined;
+  recipe: Observable<Recipe> | undefined;
 
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    const recipeId = Number(this.route.snapshot.paramMap.get('id'));
-    this.recipe = this.recipeService.getRecipeById(recipeId);
+    this.route.params.subscribe(params => {
+      this.recipe = this.recipeService.getRecipeById(params['id']);
+    })
   }
 }
