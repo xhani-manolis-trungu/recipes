@@ -30,7 +30,9 @@ export class RecipeListComponent {
     merge(
       this.recipeStateService.recipeDeleted$,
       this.recipeStateService.recipeAdded$
-    ).pipe(distinctUntilChanged()).subscribe(() => this.getAllRecipeLists());
+    ).pipe(distinctUntilChanged()).subscribe((result) => {
+      return this.getAllRecipeLists()
+    });
   }
 
   getAllRecipeLists() {

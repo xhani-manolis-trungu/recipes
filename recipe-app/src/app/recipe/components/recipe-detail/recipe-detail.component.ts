@@ -15,7 +15,7 @@ export class RecipeDetailComponent {
   constructor(private route: ActivatedRoute, private recipeService: RecipeService) {}
 
   ngOnInit(): void {
-    this.route.params.subscribe(params => {
+    this.route.params.subscribe((params: any) => {
       this.recipe = this.recipeService.getRecipeById(params['id']);
     })
   }

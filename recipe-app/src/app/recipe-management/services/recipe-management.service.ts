@@ -1,15 +1,16 @@
 // src/app/recipe-management/services/recipe-management.service.ts
 import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs';
 import { Recipe } from '../../recipe/models/recipe.model';
 import { RecipeService } from '../../recipe/services/recipe.service';
-import { Observable } from 'rxjs';
-import { RecipeStateService } from '../../shared/services/recipe-state.service';
 
 @Injectable({
   providedIn: 'root',
 })
 export class RecipeManagementService {
-  constructor(private recipeService: RecipeService, private recipeDeleted: RecipeStateService) {}
+  constructor(
+    private recipeService: RecipeService
+  ) {}
 
   // Function to get the list of recipes
   getRecipes(): Observable<Recipe[]> {
