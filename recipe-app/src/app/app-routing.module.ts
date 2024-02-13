@@ -1,7 +1,6 @@
 // src/app/app-routing.module.ts
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { RecipeListComponent } from './recipe-list/components/recipe-list/recipe-list.component';
 
 export const routes: Routes = [
   { path: '', loadChildren: () => import('./recipe-list/recipe-list.module').then(m => m.RecipeListModule)},

@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Recipe } from '../../models/recipe.model';
 import { ActivatedRoute } from '@angular/router';
-import { RecipeService } from '../../services/recipe.service';
 import { Observable } from 'rxjs';
+import { Recipe } from '../../models/recipe.model';
+import { RecipeService } from '../../services/recipe.service';
 
 @Component({
   selector: 'app-recipe-detail',

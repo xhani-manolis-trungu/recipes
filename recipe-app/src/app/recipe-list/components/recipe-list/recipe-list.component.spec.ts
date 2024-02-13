@@ -1,9 +1,9 @@
-import { ActivatedRoute, RouterModule } from '@angular/router';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 
-import { RecipeListComponent } from './recipe-list.component';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
 import { of } from 'rxjs';
+import { RecipeListComponent } from './recipe-list.component';
 
 describe('RecipeListComponent', () => {
   let component: RecipeListComponent;

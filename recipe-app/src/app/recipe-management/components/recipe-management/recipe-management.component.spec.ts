@@ -1,7 +1,7 @@
-import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule } from '@angular/common/http/testing';
-import { RecipeManagementComponent } from './recipe-management.component';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RecipeFormComponent } from '../../../recipe/components/recipe-form/recipe-form.component';
+import { RecipeManagementComponent } from './recipe-management.component';
 
 describe('RecipeManagementComponent', () => {
   let component: RecipeManagementComponent;

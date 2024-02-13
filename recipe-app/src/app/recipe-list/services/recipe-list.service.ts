@@ -1,6 +1,6 @@
 // src/app/recipe-list/services/recipe-list.service.ts
-import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { RecipeList } from '../models/recipe-list.model';
 

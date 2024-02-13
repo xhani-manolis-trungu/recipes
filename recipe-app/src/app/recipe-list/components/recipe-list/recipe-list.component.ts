@@ -1,10 +1,9 @@
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component } from '@angular/core';
+import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, Subject, distinctUntilChanged, finalize, map, merge, mergeAll, of, switchMap, takeUntil } from 'rxjs';
+import { Observable, Subject, distinctUntilChanged, merge } from 'rxjs';
+import { RecipeStateService } from '../../../shared/services/recipe-state.service';
 import { RecipeList } from '../../models/recipe-list.model';
 import { RecipeListService } from '../../services/recipe-list.service';
-import { RecipeStateService } from '../../../shared/services/recipe-state.service';
-import { ToggleServiceService } from '../../../shared/services/toggle-service.service';
 
 @Component({
   selector: 'app-recipe-list',
