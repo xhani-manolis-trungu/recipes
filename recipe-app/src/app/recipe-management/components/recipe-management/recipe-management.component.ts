@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Recipe } from '../../../recipe/models/recipe.model';
+import { Recipe } from '../../../shared/models/recipe.model';
 import { RecipeManagementService } from '../../services/recipe-management.service';
 
 @Component({

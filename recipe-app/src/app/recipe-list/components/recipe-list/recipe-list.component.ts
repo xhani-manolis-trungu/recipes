@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subject, distinctUntilChanged, merge } from 'rxjs';
+import { Recipe } from '../../../shared/models/recipe.model';
 import { RecipeStateService } from '../../../shared/services/recipe-state.service';
-import { RecipeList } from '../../models/recipe-list.model';
-import { RecipeListService } from '../../services/recipe-list.service';
+import { RecipeService } from '../../../shared/services/recipe.service';
 
 @Component({
   selector: 'app-recipe-list',
@@ -12,12 +12,12 @@ import { RecipeListService } from '../../services/recipe-list.service';
 })
 export class RecipeListComponent {
   toggleServiceKey: string | undefined;
-  recipeList: Observable<RecipeList[] >| undefined;
+  recipeList: Observable<Recipe[] >| undefined;
 
   private destroy$ = new Subject<void>();
 
   constructor(
-    private recipeListService: RecipeListService,
+    private recipeListService: RecipeService,
     private recipeStateService: RecipeStateService,
     private router: Router,
     private route: ActivatedRoute
@@ -35,7 +35,7 @@ export class RecipeListComponent {
   }
 
   getAllRecipeLists() {
-    this.recipeList = this.recipeListService.getAllRecipeLists();
+    this.recipeList = this.recipeListService.getAllRecipes();
   }
 
   navigateToRecipeDetail(recipeId: string): void {

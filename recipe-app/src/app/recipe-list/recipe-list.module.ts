@@ -1,10 +1,11 @@
+
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 
 import { RecipeListComponent } from './components/recipe-list/recipe-list.component';
 import { RecipeListRoutingModule } from './recipe-list-routing.module';
-import { RecipeListService } from './services/recipe-list.service';
 import { ToggleServiceService } from '../shared/services/toggle-service.service';
+import { RecipeService } from '../shared/services/recipe.service';
 
 
 @NgModule({
@@ -13,6 +14,6 @@ import { ToggleServiceService } from '../shared/services/toggle-service.service'
     CommonModule,
     RecipeListRoutingModule
   ],
-  providers: [RecipeListService, ToggleServiceService]
+  providers: [RecipeService, ToggleServiceService]
 })
 export class RecipeListModule { }

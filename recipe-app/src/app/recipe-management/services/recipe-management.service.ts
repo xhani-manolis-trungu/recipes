@@ -1,8 +1,8 @@
 // src/app/recipe-management/services/recipe-management.service.ts
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Recipe } from '../../recipe/models/recipe.model';
-import { RecipeService } from '../../recipe/services/recipe.service';
+import { Recipe } from '../../shared/models/recipe.model';
+import { RecipeService } from '../../shared/services/recipe.service';
 
 @Injectable({
   providedIn: 'root',

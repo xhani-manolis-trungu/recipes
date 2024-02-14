@@ -1,8 +1,8 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 import { ActivatedRoute } from '@angular/router';
 import { of } from 'rxjs';
-import { Recipe } from '../../models/recipe.model';
-import { RecipeService } from '../../services/recipe.service';
+import { Recipe } from '../../../shared/models/recipe.model';
+import { RecipeService } from '../../../shared/services/recipe.service';
 import { RecipeDetailComponent } from './recipe-detail.component';
 
 describe('RecipeDetailComponent', () => {
@@ -25,12 +25,10 @@ describe('RecipeDetailComponent', () => {
         { provide: RecipeService, useValue: mockRecipeService }
       ]
     }).compileComponents();
-  }));
 
-  beforeEach(() => {
     fixture = TestBed.createComponent(RecipeDetailComponent);
     component = fixture.componentInstance;
-  });
+  }));
 
   it('should create', () => {
     expect(component).toBeTruthy();
