@@ -18,9 +18,9 @@ export class RecipeFormComponent {
 
   constructor(private fb: FormBuilder) {
     this.recipeForm = this.fb.group({
-      name: ['', Validators.required],
-      ingredients: ['', Validators.required],
-      instructions: ['', Validators.required],
+      name: [''],
+      ingredients: [''],
+      instructions: [''],
     });
   }
 

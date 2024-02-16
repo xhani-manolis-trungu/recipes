@@ -1,9 +1,10 @@
 import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, RouterModule } from '@angular/router';
 import { of } from 'rxjs';
 import { Recipe } from '../../../shared/models/recipe.model';
 import { RecipeService } from '../../../shared/services/recipe.service';
 import { RecipeDetailComponent } from './recipe-detail.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
 
 describe('RecipeDetailComponent', () => {
   let component: RecipeDetailComponent;
@@ -20,6 +21,7 @@ describe('RecipeDetailComponent', () => {
 
     TestBed.configureTestingModule({
       declarations: [RecipeDetailComponent],
+      imports: [HttpClientTestingModule, RouterModule],
       providers: [
         { provide: ActivatedRoute, useValue: mockActivatedRoute },
         { provide: RecipeService, useValue: mockRecipeService }
@@ -35,7 +37,7 @@ describe('RecipeDetailComponent', () => {
   });
 
   it('should fetch recipe on ngOnInit', () => {
-    const recipe: Recipe = { id: '1', name: 'Test Recipe', ingredients: [], instructions: '' };
+    const recipe = { id: '1', name: 'Test Recipe', ingredients: [''], instructions: '', image: '' } as Recipe;
     mockRecipeService.getRecipeById.mockReturnValue(of(recipe));
 
     component.ngOnInit();

@@ -1,6 +1,7 @@
 export interface Recipe {
   id: string;
   name: string;
-  ingredients: string[];
+  image?: string;
   instructions: string;
+  ingredients?: string[]; // Making ingredients optional
 }

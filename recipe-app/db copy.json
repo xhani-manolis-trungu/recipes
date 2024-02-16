@@ -3,7 +3,6 @@
     {
       "id": "3f",
       "name": "Spaghetti Bolognese",
-      "image": "/assets/img/spaghetti-bolognese.jpg",
       "ingredients": [
         "Spaghetti",
         "Ground Beef",
@@ -18,7 +17,6 @@
     {
       "id": "gr3g",
       "name": "Chicken Caesar Salad",
-      "image": "/assets/img/caesar-salad.jpg",
       "ingredients": [
         "Chicken Breast",
         "Romaine Lettuce",
@@ -31,7 +29,6 @@
     {
       "id": "ar3h",
       "name": "Vegetarian Stir-Fry",
-      "image": "/assets/img/veggie-stir-fry.jpg",
       "ingredients": [
         "Tofu",
         "Broccoli",
@@ -42,15 +39,6 @@
         "Garlic"
       ],
       "instructions": "Stir-fry tofu and vegetables with soy sauce, ginger, and garlic until cooked."
-    },
-    {
-      "id": "b300",
-      "name": "French Fries",
-      "image": "/assets/img/french-fries.jpg",
-      "ingredients": [
-        "Potatoes"
-      ],
-      "instructions": "Slice your potatoes in jullien shape and fry them "
     }
   ]
 }

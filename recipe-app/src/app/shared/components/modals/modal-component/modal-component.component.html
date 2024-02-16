@@ -1,0 +1,55 @@
+<div
+    id="default-modal"
+    tabindex="-1"
+    [attr.aria-hidden]= "modalTarget === 'default-modal' ? true : false"
+    [ngClass]="{'hidden': modalTarget !== 'default-modal'}"
+    [ngStyle]="{'background': modalTarget === 'default-modal' ?  'rgba(0,0,0,.7)': 'rgba(0,0,0,0)'}"
+    class="overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 bottom-0 flex justify-center items-center">
+    <div class="relative p-4 w-full max-w-md max-h-full">
+        <div class="relative">
+            <div class="p-4 md:p-5 text-center">
+                <div class="flex-shrink-0 m-6 relative overflow-hidden bg-teal-500 rounded-lg max-w-xs shadow-lg">
+                  <div class="relative text-white px-6 pb-6 mt-6 z-50 flex justify-end">
+                    <button
+                      type="button"
+                      (click)="toggleModal()"
+                      data-modal-hide="default-modal">
+                        <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
+                        </svg>
+                        <span class="sr-only">Close modal</span>
+                    </button>
+                  </div>
+
+                  <div class="relative text-white px-6 mt-6">
+                    <div class="flex justify-center pt-12 pb-2">
+                      <span class="block font-semibold text-xl">{{modalData?.name}}</span>
+                    </div>
+                  </div>
+
+                  <svg class="absolute bottom-0 left-0 mb-8" viewBox="0 0 375 283" fill="none" style="transform: scale(1.5); opacity: 0.1;">
+                    <rect x="159.52" y="175" width="152" height="152" rx="8" transform="rotate(-45 159.52 175)" fill="white"/>
+                    <rect y="107.48" width="152" height="152" rx="8" transform="rotate(-45 0 107.48)" fill="white"/>
+                  </svg>
+                  <div class="relative px-10 flex items-center justify-center">
+                    <div class="block absolute w-48 h-48 bottom-0 left-0 -mb-24 ml-3" style="background: radial-gradient(black, transparent 60%); transform: rotate3d(0, 0, 1, 20deg) scale3d(1, 0.6, 1); opacity: 0.2;"></div>
+                    <img class="relative w-40" src="https://user-images.githubuserco  ntent.com/2805249/64069998-305de300-cc9a-11e9-8ae7-5a0fe00299f2.png" alt="">
+                  </div>
+                  <div class="relative text-white px-6 pb-6 mt-6">
+                    <ul class="overflow-hidden" *ngFor="let ingredient of modalData?.ingredients">
+                      <li class="px-4 py-2 bg-transparent transition-all duration-300 ease-in-out">{{ingredient}}</li>
+                    </ul>
+                    <div class="flex justify-center pt-12 pb-6">
+                      <button
+                      data-modal-hide="default-modal"
+                      type="button"
+                      (click)="toggleModal()">
+                        <span class="block bg-white rounded-full text-teal-500 text-xs font-bold px-3 py-2 leading-none flex items-center">OK</span>
+                      </button>
+                    </div>
+                  </div>
+                </div>
+            </div>
+        </div>
+    </div>
+  </div>

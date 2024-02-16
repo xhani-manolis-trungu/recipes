@@ -1,14 +1,16 @@
-<div>
+<div class="flex flex-col items-center p-5">
   <h2>Manage Recipe</h2>
 
-  <!-- Recipe Form Component for adding new recipes -->
-  <app-recipe-form (recipeAdded)="onRecipeAdded($event)"></app-recipe-form>
+  <div class="container flex flex-row justify-between content-center bg-gray-200 p-5">
+    <!-- Recipe Form Component for adding new recipes -->
+    <app-recipe-form (recipeAdded)="onRecipeAdded($event)"></app-recipe-form>
 
-  <!-- List of Recipes -->
-  <ul>
-    <li *ngFor="let recipe of (recipes | async)">
-      {{ recipe.name }}
-      <button (click)="onDeleteRecipe(recipe.id)">Delete</button>
-    </li>
-  </ul>
+    <!-- List of Recipes -->
+    <ul>
+      <li *ngFor="let recipe of (recipes | async)">
+        {{ recipe.name }}
+        <button class="bg-blue-300 hover:bg-blue-300 text-white font-regular py-1 px-1 rounded my-1" (click)="onDeleteRecipe(recipe.id)">Delete</button>
+      </li>
+    </ul>
+  </div>
 </div>

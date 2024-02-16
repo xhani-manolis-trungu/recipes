@@ -13,6 +13,8 @@ import { RecipeService } from '../../../shared/services/recipe.service';
 export class RecipeListComponent {
   toggleServiceKey: string | undefined;
   recipeList: Observable<Recipe[] >| undefined;
+  isModalOpen: boolean = false;
+  dynamicData: any;
 
   private destroy$ = new Subject<void>();
 
@@ -29,9 +31,18 @@ export class RecipeListComponent {
     merge(
       this.recipeStateService.recipeDeleted$,
       this.recipeStateService.recipeAdded$
-    ).pipe(distinctUntilChanged()).subscribe((result) => {
+    ).pipe(distinctUntilChanged()).subscribe(() => {
       return this.getAllRecipeLists()
     });
+  }
+
+  openModal(recipe: Recipe) {
+    this.dynamicData = { ...recipe };
+    this.toggleModal();
+  }
+
+  toggleModal() {
+    this.isModalOpen = !this.isModalOpen;
   }
 
   getAllRecipeLists() {

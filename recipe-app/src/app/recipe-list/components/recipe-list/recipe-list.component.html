@@ -1,18 +1,31 @@
-<div>
-  <h2>Recipe List</h2>
+<app-modal-component [modalData]="dynamicData" [modalTarget]="'default-modal'" (isModalOpen)="toggleModal()" *ngIf="isModalOpen"></app-modal-component>
 
-  <ul>
-    <li *ngFor="let recipe of (recipeList | async)">
-      <h3>{{ recipe.name }}</h3>
-      <p>Ingredients: {{ recipe.ingredients.join(', ') }}</p>
-      <p>Instructions: {{ recipe.instructions }}</p>
+<div class="container p-2 sm:max-w-full lg:max-w-full">
+  <div class="bg-gradient-to-r from-purple-400 to-pink-600 py-8">
+    <div class="container mx-auto px-4">
+      <h2 class="text-white text-3xl font-semibold mb-4">Recipe List</h2>
+    </div>
+  </div>
 
-      <button (click)="navigateToRecipeDetail(recipe.id)">View Details</button>
-    </li>
-  </ul>
+  <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 px-2">
+    <div *ngFor="let recipe of (recipeList | async)">
+      <div class="max-w-md mx-auto bg-white rounded-lg overflow-hidden shadow-lg">
+        <img class="w-full h-48 object-cover object-center" src="{{recipe.image}}" alt="{{recipe.name}}">
+        <div class="px-6 py-4">
+          <div class="font-bold text-xl mb-2">{{recipe.name}}</div>
+          <p class="text-gray-700 text-base truncate">{{recipe.instructions}}</p>
+        </div>
+        <div class="px-6 py-4">
+          <button class="bg-blue-300 hover:bg-blue-400 text-white font-semibold py-2 px-4 rounded-full" (click)="openModal(recipe)">
+            View Details
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 
-<button (click)="navigateToRecipeManagement()">Manage Recipe</button>
+<button class="bg-blue-300 hover:bg-blue-300 text-white font-regular py-1 px-1 rounded my-1" (click)="navigateToRecipeManagement()">Manage Recipe</button>
 
 <hr>
 

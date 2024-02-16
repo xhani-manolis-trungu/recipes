@@ -1,16 +1,24 @@
-<form [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
-  <div>
+<form
+  class="w-full max-w-sm"
+  [formGroup]="recipeForm" (ngSubmit)="onSubmit()">
+  <div class="content">
     <label for="name">Name:</label>
-    <input type="text" id="name" name="name" formControlName="name">
+    <input
+      class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-200"
+      type="text" id="name" name="name" formControlName="name">
   </div>
-  <div>
+  <div class="content">
     <label for="ingredients">Ingredients:</label>
-    <input type="text" id="ingredients" name="ingredients" formControlName="ingredients">
+    <input
+    class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline focus:border-blue-200"
+      type="text" id="ingredients" name="ingredients" formControlName="ingredients">
   </div>
-  <div>
+  <div class="content">
     <label for="instructions">Instructions:</label>
-    <textarea id="instructions" name="instructions" formControlName="instructions"></textarea>
+    <textarea
+      class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+      id="instructions" name="instructions" formControlName="instructions"></textarea>
   </div>
 
-  <button type="submit">Submit</button>
+  <button class="bg-green-300 hover:bg-green-500 text-white font-regular py-1 px-1 rounded my-1" type="submit">Submit</button>
 </form>
